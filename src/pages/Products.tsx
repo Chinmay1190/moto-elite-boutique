@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ProductGrid } from "@/components/products/ProductGrid";
-import { ProductFilters } from "@/components/products/ProductFilters";
+import { ProductFilters, FilterOptions } from "@/components/products/ProductFilters";
 import { allProducts } from "@/data/products";
 import { Product } from "@/types/product";
 
@@ -20,10 +20,10 @@ const Products = () => {
   const searchQuery = params.get("q");
 
   // Initialize filter state
-  const [filters, setFilters] = useState({
+  const [filters, setFilters] = useState<FilterOptions>({
     categories: categoryParam ? [categoryParam] : [],
     manufacturers: manufacturerParam ? [manufacturerParam] : [],
-    priceRange: [0, 10000000],
+    priceRange: [0, 10000000] as [number, number],
     sort: sortParam
   });
 
@@ -124,7 +124,7 @@ const Products = () => {
     }
   }, [filters, navigate, searchQuery]);
 
-  const handleFilterChange = (newFilters) => {
+  const handleFilterChange = (newFilters: FilterOptions) => {
     setFilters(newFilters);
   };
 

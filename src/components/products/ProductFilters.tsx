@@ -6,7 +6,7 @@ import { categories, manufacturers } from "@/data/products";
 import { X, Filter } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface FilterOptions {
+export interface FilterOptions {
   categories: string[];
   manufacturers: string[];
   priceRange: [number, number];
